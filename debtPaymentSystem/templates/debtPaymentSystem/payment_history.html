@@ -1,0 +1,77 @@
+{% extends 'debtPaymentSystem/base.html' %}
+{% load static %}
+{% block content %}
+    {% include 'debtPaymentSystem/navbar.html' %}
+    {% include 'debtPaymentSystem/sidebar.html' %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Payment History</title>
+        <!-- AdminLTE CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css">
+    </head>
+    <body class="hold-transition layout-fixed">
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>History</h1>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>IP Address</th>
+                                        <th>Debt Category</th>
+                                        <th>Create Date</th>
+                                        <th>Due Date</th>
+                                        <th>RD / ALL</th>
+                                        <th>Amount</th>
+                                        <th>Pay Date</th>
+                                        <th>Pay Amount</th>
+                                        <th>Status</th>
+                                        <th>Bill</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for data in dataset %}
+                                        <tr>
+                                            <td>{{ data.payment.ip }}</td>
+                                            <td>{{ data.debt.debt_category.name }}</td>
+                                            <td>{{ data.debt.create_date }}</td>
+                                            <td>{{ data.debt.due_date }}</td>
+                                            <td>{{ data.payment.rd_installment }} / {{ data.debt.installment }}</td>
+                                            <td>{{ data.debt.amount }}</td>
+                                            <td>{{ data.payment.pay_date }}</td>
+                                            <td>{{ data.payment.pay_amount }}</td>
+                                            <td>{% if data.debt.status %}
+                                                Ödeme Bitti
+                                            {% else %}
+                                                Devam Ediyor...
+                                            {% endif %}</td>
+                                            <td><a href="{% url 'debtPaymentSystem:bill'  data.payment.id %}"
+                                                   class="btn btn-success"
+                                                   id="fatura-button"><i
+                                                    class="fas fa-file-invoice-dollar"></i></a></td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- AdminLTE JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js"></script>
+    </body>
+    </html>
+    {% include 'debtPaymentSystem/footer.html' %}
+{% endblock %}

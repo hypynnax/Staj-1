@@ -1,0 +1,38 @@
+{% extends 'debtPaymentSystem/base.html' %}
+{% load static %}
+{% block content %}
+    {% include 'debtPaymentSystem/navbar.html' %}
+    {% include 'debtPaymentSystem/sidebar.html' %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            .content {
+                flex: 1;
+                padding: 20px;
+            }
+
+            .footer {
+                padding: 10px;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+
+        </style>
+    </head>
+    <body>
+    <footer class="footer">
+        {% include 'debtPaymentSystem/footer.html' %}
+    </footer>
+    </body>
+    </html>
+{% endblock %}

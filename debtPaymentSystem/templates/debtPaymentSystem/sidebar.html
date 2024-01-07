@@ -1,0 +1,46 @@
+{% load static %}
+
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{% url 'debtPaymentSystem:home' %}" class="brand-link">
+        <img src="{% static 'debtPaymentSystem/images/debtpaylogo.png' %}" alt="AdminLTE Logo"
+             class="brand-image elevation-3"
+             style="opacity: .8">
+        <span class="brand-text font-weight-light">Payment System</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="info">
+                <a href="{% url 'debtPaymentSystem:home' %}" class="d-block">Welcome, {{ user_name }}</a>
+            </div>
+        </div>
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item menu-open">
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'debtPaymentSystem:debts' %}" class="nav-link">
+                                <i class="fas fa-money-bill"></i>
+                                <p>Debts</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'debtPaymentSystem:history' %}" class="nav-link">
+                                <i class="far fa-file-alt"></i>
+                                <p>Payment History</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- /.sidebar -->
+</aside>
